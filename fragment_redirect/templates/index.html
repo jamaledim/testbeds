@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Flask App</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hello World!</h1>
+    </div>
+    <script>
+        function getQueryParams() {
+            const params = {};
+            // Get the query string part of the URL (e.g., "?name=Alice&age=10")
+            const queryString = window.location.search;
+
+            // Check if there's a query string
+            if (queryString) {
+                // Remove the leading '?' and split the string into individual key=value pairs
+                const paramPairs = queryString.substring(1).split('&');
+
+                // Loop through each pair
+                paramPairs.forEach(pair => {
+                    // Split each pair into key and value
+                    const parts = pair.split('=');
+                    const key = decodeURIComponent(parts[0]); // Decode URL-encoded characters for the key
+                    // If there's a value, decode it; otherwise, set it to an empty string
+                    const value = parts.length > 1 ? decodeURIComponent(parts[1]) : '';
+                    params[key] = value;
+                });
+            }
+            return params;
+        }
+        const redirect_url = getQueryParams("redirect_url")["redirect_url"];
+         if (document.location.search.indexOf("redirect_url") !== -1){
+            console.log(redirect_url)
+            setInterval(
+                ()=>{
+                    document.location.assign(`${redirect_url}#token=${crypto.randomUUID()}`)
+                }, 3000
+            )
+            
+         }
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+.localized
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env/
+.venv/
+*.egg-info/
+.pytest_cache/
+.coverage
+.tox/
+dist/
+build/
+*.egg
+*.whl
+
+# Flask specific
+instance/
+.flaskenv
+
+# Editor/IDE specific files
+.idea/             # IntelliJ IDEA
+.vscode/           # VS Code
+*.iml              # IntelliJ IDEA module files
+*.swp              # Vim swap files
+*~                 # Emacs backup files
+
+# Logs and Databases
+*.log
+*.sqlite
+*.db
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+
+# Compiled files
+*.o
+*.a
+*.so
+*.dll
+*.exe
+
+# Package managers
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Miscellaneous
+.env
+.flaskenv
+uploads/
