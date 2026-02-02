@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Playground</title>
+</head>
+<body>
+	<div id="demo">
+		<h2>Loading...</h2>
+	</div>
+	<script>
+		addEventListener('message', ({ data }) => {
+		    const url = data?.url;
+
+		    const getDataFromApi = async () => {
+		        const response = await fetch(url, {
+		            method: 'get',
+		            credentials: 'include',
+		            headers: {
+		                'Referer-application': 'MyAccount'
+		            }
+		        });
+
+		        if (response.status === 200) {
+		            const responseText = await response.text();
+		            postMessage({
+		                html: responseText,
+		                status: response.status
+		            });
+		        } else {
+		            postMessage({
+		                status: response.status
+		            });
+		        }
+		    };
+
+		    if (data.url){
+		    	getDataFromApi();
+		    }
+
+		    if (data.html){
+		    	document.getElementById("demo").innerHTML = data.html
+		    }
+		    
+		});
+	</script>
+</body>
+</html>
